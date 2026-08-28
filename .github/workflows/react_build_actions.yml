@@ -1,28 +1,28 @@
-name: React vite CI
+name: React Vite CI
 
 on:
   push:
-    branch:
-      - main
+    branches:
+      - main # puede utilizar tambien: feature/*
   pull_request:
-    branch:
-      main
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: descargar codigo
-      uses: actions/checkout@v4
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
 
-    - name: instalar Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: instalar dependencias
-      run: npm ci
+      - name: Instalar dependencias
+        run: npm ci
 
-    - name: construir la aplicación de js
-      run: npm run build
+      - name: Construir aplicación
+        run: npm run build
